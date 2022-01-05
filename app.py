@@ -17,12 +17,12 @@ def predict():
     print(int_features)
     print(final)
     prediction=model.predict_proba(final)
-    output='{0:.{1}f}'.format(prediction[0][1], 2)
+    output='{0:.0%}'.format(prediction[0][1])
 
     if output>str(0.5):
-        return render_template('forest_fire.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output))
+        return render_template('forest_fire.html',pred='Hutan Anda dalam Bahaya.\nPeluang terjadinya kebakaran adalah {}'.format(output))
     else:
-        return render_template('forest_fire.html',pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output))
+        return render_template('forest_fire.html',pred='Hutan Anda aman.\n Peluang terjadinya kebakaran adalah {}'.format(output))
 
 if __name__ == '__main__':
     app.run(debug=True,port=5001)
